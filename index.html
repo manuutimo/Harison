@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FM Radio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .radio {
+      background: #444;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    select, button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="radio">
+    <h1>🎵 Web FM Radio</h1>
+    <select id="stationSelect">
+      <option value="https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one">BBC Radio 1</option>
+      <option value="https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two">BBC Radio 2</option>
+      <option value="https://npr-ice.streamguys1.com/live.mp3">NPR</option>
+      <option value="https://icecast.vgtrk.cdnvideo.ru/vestifm_mp3_192kbps">Vesti FM (Russia)</option>
+    </select>
+    <br>
+    <button onclick="playRadio()">▶️ Play</button>
+    <button onclick="pauseRadio()">⏸️ Pause</button>
+    <audio id="radioPlayer" controls style="margin-top:10px; width: 100%; display: none;"></audio>
+  </div>
+
+  <script>
+    const player = document.getElementById('radioPlayer');
+    const stationSelect = document.getElementById('stationSelect');
+
+    function playRadio() {
+      player.src = stationSelect.value;
+      player.play();
+      player.style.display = 'block';
+    }
+
+    function pauseRadio() {
+      player.pause();
+    }
+  </script>
+</body>
+</html>
